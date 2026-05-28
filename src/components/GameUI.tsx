@@ -80,7 +80,11 @@ export default function GameUI() {
 
   const scene = SCENES[npc.id];
   const popupMode =
-    s.mode === "quiz" || s.mode === "explanation" || s.mode === "choice" || s.mode === "puzzle";
+    s.mode === "theory" ||
+    s.mode === "quiz" ||
+    s.mode === "explanation" ||
+    s.mode === "choice" ||
+    s.mode === "puzzle";
 
   return (
     <div className="flex h-full flex-col">
@@ -185,6 +189,7 @@ export default function GameUI() {
       <AnimatePresence>
         {popupMode && (
           <Modal wide={s.mode === "puzzle"}>
+            {s.mode === "theory" && <TheoryView />}
             {s.mode === "quiz" && <QuizView />}
             {s.mode === "explanation" && <ExplanationView />}
             {s.mode === "choice" && <ChoiceView />}
@@ -218,14 +223,44 @@ function DialogueLine() {
   );
 }
 
+function TheoryView() {
+  const { currentNpc, closeTheory } = useGameStore();
+  const npc = currentNpc();
+  if (!npc?.theory) return null;
+  return (
+    <div>
+      <div className="mb-3 text-base font-bold text-amber-300">📖 Lý thuyết — {npc.name}</div>
+      <p className="mb-5 rounded-lg border-l-4 border-amber-500 bg-slate-800/50 p-4 text-lg leading-relaxed text-slate-100">
+        {npc.theory}
+      </p>
+      <button
+        onClick={closeTheory}
+        className="w-full rounded-lg bg-amber-600 py-3 text-lg font-semibold text-white hover:bg-amber-500"
+      >
+        Đã đọc → Trả lời câu hỏi
+      </button>
+    </div>
+  );
+}
+
 function QuizView() {
-  const { currentNpc, answerQuiz, showHint } = useGameStore();
+  const { currentNpc, answerQuiz, showHint, showTheory } = useGameStore();
   const npc = currentNpc();
   const quiz = npc?.quiz;
   if (!quiz) return null;
   return (
     <div>
-      <div className="mb-2 text-base font-bold text-amber-300">{npc!.name}</div>
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <span className="text-base font-bold text-amber-300">{npc!.name}</span>
+        {npc!.theory && (
+          <button
+            onClick={showTheory}
+            className="rounded-md border border-amber-500/60 px-3 py-1 text-sm font-semibold text-amber-300 hover:bg-amber-500/10"
+          >
+            📖 Ôn lý thuyết
+          </button>
+        )}
+      </div>
       <p className="mb-4 text-2xl font-bold leading-snug text-slate-100">{quiz.question}</p>
       {showHint && quiz.hint && (
         <p className="mb-4 rounded-lg border-l-2 border-amber-400 bg-amber-950/40 p-3 text-base text-amber-100">

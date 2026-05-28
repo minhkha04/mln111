@@ -37,6 +37,7 @@ export interface NPC {
   stage: number; // giai đoạn tương ứng
   requiresStateBorn?: boolean; // chỉ xuất hiện sau khi nhà nước ra đời
   lines: string[]; // lời thoại (gõ chữ từng dòng)
+  theory?: string; // tóm tắt lý thuyết (trích slide) để ôn tập trước khi trả lời
   quiz?: Quiz;
   onComplete?: Partial<Stats>; // tác động chỉ số khi nói chuyện xong
   choices?: Choice[]; // lựa chọn sau thoại (nếu có)
@@ -52,6 +53,7 @@ export interface SceneBg {
 export type Mode =
   | "explore" // đi bộ trong màn, chưa nói chuyện
   | "dialogue"
+  | "theory" // thẻ lý thuyết ôn tập
   | "quiz"
   | "explanation"
   | "puzzle" // ghép tranh khi trả lời sai

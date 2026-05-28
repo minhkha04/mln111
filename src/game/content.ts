@@ -22,6 +22,8 @@ export const NPCS: NPC[] = [
       "Chúng tôi cùng nhau trồng trọt và săn bắt.",
       "Ai cũng có phần như nhau. Không ai giàu hơn ai cả.",
     ],
+    theory:
+      "Nguồn gốc nhà nước — Công xã nguyên thủy: công cụ sản xuất lạc hậu (đồ đá), năng suất thấp, KHÔNG có của dư thừa. Do chưa có chế độ tư hữu nên chưa có giai cấp, vì vậy nhà nước CHƯA xuất hiện.",
     quiz: {
       question: "Trong xã hội công xã nguyên thủy, vì sao nhà nước chưa xuất hiện?",
       options: [
@@ -51,6 +53,8 @@ export const NPCS: NPC[] = [
       "Công cụ mới giúp chúng tôi sản xuất nhiều hơn.",
       "Bây giờ đã có của cải dư thừa.",
     ],
+    theory:
+      "Nguyên nhân SÂU XA ra đời nhà nước: sự phát triển của lực lượng sản xuất (công cụ tiến bộ — đồ đồng) làm năng suất tăng, dẫn đến của cải DƯ THỪA tương đối. Đây là tiền đề vật chất làm xuất hiện chế độ tư hữu.",
     quiz: {
       question: "Sự phát triển của lực lượng sản xuất dẫn đến điều gì?",
       options: [
@@ -81,6 +85,8 @@ export const NPCS: NPC[] = [
       "Tôi có quyền giữ nhiều tài sản hơn.",
       "(Một Worker gần đó thì thầm: Nhưng chúng tôi ngày càng nghèo. Mọi thứ không còn công bằng nữa.)",
     ],
+    theory:
+      "Chế độ TƯ HỮU về tư liệu sản xuất ra đời khi một số người chiếm của dư làm của riêng. Tư hữu là nguyên nhân TRỰC TIẾP làm xã hội phân hóa thành các giai cấp có lợi ích đối lập (giàu — nghèo).",
     quiz: {
       question: "Nguyên nhân trực tiếp dẫn đến sự phân hóa giai cấp là gì?",
       options: [
@@ -116,6 +122,8 @@ export const NPCS: NPC[] = [
       "Trong khi người giàu ngày càng giàu hơn.",
       "(Thương nhân giàu đáp: Ta sở hữu đất đai và công cụ. Họ phải làm việc cho ta.)",
     ],
+    theory:
+      "Nguyên nhân TRỰC TIẾP ra đời nhà nước: mâu thuẫn giai cấp gay gắt đến mức KHÔNG THỂ ĐIỀU HÒA. Theo Lenin: “Nhà nước là sản phẩm và biểu hiện của những mâu thuẫn giai cấp không thể điều hòa được.” Đây cũng là cội nguồn của cách mạng xã hội.",
     quiz: {
       question: "Theo Lenin, nhà nước ra đời vì nguyên nhân nào?",
       options: [
@@ -152,6 +160,8 @@ export const NPCS: NPC[] = [
       "Người giàu muốn bảo vệ tài sản. Người nghèo muốn thay đổi xã hội.",
       "Từ hôm nay, luật pháp sẽ được thực thi trong ngôi làng này.",
     ],
+    theory:
+      "Bản chất nhà nước: là tổ chức chính trị của giai cấp thống trị về kinh tế, nhằm bảo vệ trật tự hiện hành và đàn áp sự phản kháng của các giai cấp khác. 3 đặc trưng: (1) quản lý cư dân theo lãnh thổ; (2) có cơ quan quyền lực cưỡng chế (quân đội, cảnh sát); (3) có hệ thống thuế khóa.",
     quiz: {
       question: "Nhà nước là gì theo quan điểm Marx – Lenin?",
       options: [
@@ -182,6 +192,8 @@ export const NPCS: NPC[] = [
       "Chúng ta cần luật pháp, thuế và lực lượng bảo vệ",
       "để duy trì trật tự xã hội.",
     ],
+    theory:
+      "Chức năng cơ bản của nhà nước: theo tính chất gồm chức năng thống trị chính trị (duy trì sự thống trị, bảo vệ lợi ích giai cấp) và chức năng xã hội (quản lý, thúc đẩy XH phát triển); theo phạm vi gồm chức năng đối nội (luật pháp, văn hóa, y tế, giáo dục) và đối ngoại (bảo vệ lãnh thổ, trao đổi quốc tế).",
     quiz: {
       question: "Đâu là chức năng của nhà nước?",
       options: [
@@ -212,6 +224,8 @@ export const NPCS: NPC[] = [
       "Ngày nay, nhà nước còn quản lý:",
       "AI, mạng xã hội, thuế, giáo dục và an sinh xã hội.",
     ],
+    theory:
+      "Cách mạng xã hội hiện nay: thời đại CMCN 4.0, kinh tế tri thức, xu hướng đối thoại thay đối đầu. CMXH có xu hướng diễn ra dưới hình thức chuyển hóa dần dần sang hình thái KT-XH tiến bộ hơn. Nhà nước hiện đại đồng thời quản lý xã hội, ổn định chính trị và điều tiết kinh tế. Mục tiêu của Việt Nam: dân giàu, nước mạnh, công bằng, dân chủ, văn minh.",
     quiz: {
       question: "Trong xã hội hiện đại, nhà nước có vai trò gì?",
       options: [
@@ -241,6 +255,8 @@ export const NPCS: NPC[] = [
       "Ta là người ghi chép lịch sử ngôi làng.",
       "Hãy trả lời một câu hỏi ôn tập nhé.",
     ],
+    theory:
+      "Nguồn gốc cách mạng xã hội: nguyên nhân sâu xa là mâu thuẫn giữa lực lượng sản xuất (LLSX) phát triển với quan hệ sản xuất (QHSX) đã lỗi thời kìm hãm nó. Mâu thuẫn cơ bản này biểu hiện thành đấu tranh giai cấp, tất yếu dẫn tới cách mạng xã hội — đỉnh cao của đấu tranh giai cấp.",
     quiz: {
       question: "Mâu thuẫn cơ bản dẫn đến cách mạng xã hội là gì?",
       options: [

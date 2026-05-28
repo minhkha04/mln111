@@ -23,6 +23,8 @@ interface GameState {
   start: () => void;
   interact: () => void;
   nextLine: () => void;
+  showTheory: () => void;
+  closeTheory: () => void;
   answerQuiz: (index: number) => void;
   closeExplanation: () => void;
   openPuzzle: () => void;
@@ -73,6 +75,8 @@ export const useGameStore = create<GameState>((set, get) => ({
     if (!npc || s.mode !== "dialogue") return;
     if (s.lineIndex < npc.lines.length - 1) {
       set({ lineIndex: s.lineIndex + 1 });
+    } else if (npc.theory) {
+      set({ mode: "theory", dialogueSeen: true });
     } else if (npc.quiz) {
       set({ mode: "quiz", dialogueSeen: true });
     } else {
@@ -80,6 +84,11 @@ export const useGameStore = create<GameState>((set, get) => ({
       get().closeExplanation();
     }
   },
+
+  showTheory: () => {
+    if (get().currentNpc()?.theory) set({ mode: "theory" });
+  },
+  closeTheory: () => set({ mode: "quiz" }),
 
   answerQuiz: (index) => {
     const s = get();
