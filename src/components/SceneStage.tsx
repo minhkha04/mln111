@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import type { NPC, SceneBg } from "@/game/types";
+import type { NPC, SceneBg, SecondaryNPC } from "@/game/types";
 
 const NPC_POS = { x: 72, y: 40 };
 const PLAYER_START = { x: 20, y: 72 };
@@ -11,16 +11,20 @@ const PUZZLE_POS = { x: 48, y: 22 };
 const SPEED = 0.22;
 const INTERACT_DIST = 15;
 const GATE_DIST = 11;
+const SEC_DIST = 15;
 
 interface Props {
   npc: NPC;
   scene: SceneBg;
   active: boolean;
-  cleared: boolean; // đã xong NPC -> mở cổng
-  puzzlePending: boolean; // trả lời sai -> hiện điểm ghép tranh
+  cleared: boolean;
+  puzzlePending: boolean;
+  secondaryNpc?: SecondaryNPC;
+  secondarySeen?: boolean;
   onInteract: () => void;
   onExit: () => void;
   onOpenPuzzle: () => void;
+  onInteractSecondary?: () => void;
 }
 
 export default function SceneStage({
@@ -29,9 +33,12 @@ export default function SceneStage({
   active,
   cleared,
   puzzlePending,
+  secondaryNpc,
+  secondarySeen,
   onInteract,
   onExit,
   onOpenPuzzle,
+  onInteractSecondary,
 }: Props) {
   const [pos, setPos] = useState(PLAYER_START);
   const posRef = useRef(PLAYER_START);
@@ -43,10 +50,16 @@ export default function SceneStage({
   const onInteractRef = useRef(onInteract);
   const onExitRef = useRef(onExit);
   const onOpenPuzzleRef = useRef(onOpenPuzzle);
+  const onInteractSecRef = useRef(onInteractSecondary);
+  const secNpcRef = useRef(secondaryNpc);
+  const secSeenRef = useRef(secondarySeen);
   activeRef.current = active;
   clearedRef.current = cleared;
   puzzleRef.current = puzzlePending;
   onInteractRef.current = onInteract;
+  onInteractSecRef.current = onInteractSecondary;
+  secNpcRef.current = secondaryNpc;
+  secSeenRef.current = secondarySeen;
   onExitRef.current = onExit;
   onOpenPuzzleRef.current = onOpenPuzzle;
 
@@ -68,11 +81,15 @@ export default function SceneStage({
       if (k === " " || k === "e") {
         if (!activeRef.current) return;
         const { x, y } = posRef.current;
-        // gần điểm ghép tranh -> mở ghép tranh (chơi tự do, bất kể sai/đúng)
+        // gần điểm ghép tranh
         if (Math.hypot(x - PUZZLE_POS.x, y - PUZZLE_POS.y) < INTERACT_DIST) {
           onOpenPuzzleRef.current();
+        } else if (secNpcRef.current && !secSeenRef.current &&
+          Math.hypot(x - secNpcRef.current.x, y - secNpcRef.current.y) < SEC_DIST) {
+          // gần NPC phụ
+          onInteractSecRef.current?.();
         } else if (!clearedRef.current) {
-          // gần NPC -> nói chuyện
+          // gần NPC chính
           if (Math.hypot(x - NPC_POS.x, y - NPC_POS.y) < INTERACT_DIST)
             onInteractRef.current();
         }
@@ -183,7 +200,23 @@ export default function SceneStage({
         </div>
       </div>
 
-      {/* Người chơi (bóng tròn + sprite nhìn từ trên xuống) */}
+      {/* NPC phụ — chỉ hiện ở 3 màn then chốt */}
+      {secondaryNpc && (
+        <div
+          className="absolute -translate-x-1/2 -translate-y-1/2 text-center"
+          style={{ left: `${secondaryNpc.x}%`, top: `${secondaryNpc.y}%`, opacity: secondarySeen ? 0.4 : 0.85 }}
+        >
+          <div className="mx-auto h-2 w-8 rounded-[50%] bg-black/40 blur-[1px]" />
+          <div className="-mt-1 text-[2.2rem] leading-none drop-shadow-[0_4px_3px_rgba(0,0,0,0.5)]">
+            {secondaryNpc.sprite}
+          </div>
+          <div className="inline-block rounded-md bg-black/50 px-1.5 py-0.5 text-[10px] font-bold text-rose-200 backdrop-blur">
+            {secondaryNpc.name} {secondarySeen && "✅"}
+          </div>
+        </div>
+      )}
+
+      {/* Người chơi */}
       <div
         className="absolute -translate-x-1/2 -translate-y-1/2 text-center"
         style={{ left: `${pos.x}%`, top: `${pos.y}%` }}

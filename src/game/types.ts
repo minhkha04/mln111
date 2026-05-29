@@ -53,13 +53,43 @@ export interface SceneBg {
 export type Mode =
   | "explore" // đi bộ trong màn, chưa nói chuyện
   | "dialogue"
-  | "theory" // thẻ lý thuyết ôn tập
   | "quiz"
   | "explanation"
   | "puzzle" // ghép tranh khi trả lời sai
   | "choice"
   | "transition"
-  | "ending";
+  | "ending"
+  | "lesson" // bài học lý thuyết trước khi explore
+  | "theory" // phân tích sâu sau khi quiz đúng
+  | "secondary-dialogue"; // thoại NPC phụ
+
+// Bài học lý thuyết đầu mỗi màn
+export interface LessonIntro {
+  title: string;
+  concept: string;
+  bullets: string[];
+  citation: string;
+}
+
+// Phân tích sâu sau quiz
+export interface TheoryDeep {
+  title: string;
+  keyPoint: string;
+  explanation: string[];
+  diagram: string;
+  citation: string;
+  realWorld?: string;
+}
+
+// NPC phụ (chỉ thoại ngắn, không quiz)
+export interface SecondaryNPC {
+  id: string;
+  name: string;
+  sprite: string;
+  x: number;
+  y: number;
+  lines: string[];
+}
 
 // Tranh ghép (jigsaw 3x3) — phạt khi trả lời sai, ôn lại khái niệm
 export interface Puzzle {
