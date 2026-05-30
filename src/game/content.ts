@@ -388,6 +388,30 @@ export const PUZZLES: Record<string, Puzzle> = {
     tiles: ["🏙️", "📡", "🛰️", "🏦", "🏛️", "💳", "🤖", "📱", "🌐"],
     image: "/puzzles/modern.png",
   },
+  class: {
+    id: "class",
+    caption: "Hình thành giai cấp",
+    concept: "Xã hội phân hóa thành giai cấp thống trị và bị thống trị dựa trên quyền sở hữu tư liệu sản xuất.",
+    bg: "from-rose-300/40 via-amber-800 to-stone-950",
+    tiles: ["🤵", "👑", "💰", "⚖️", "🏠", "📜", "😣", "⛓️", "🧱"],
+    image: "/puzzles/class.png",
+  },
+  revolution: {
+    id: "revolution",
+    caption: "Cách mạng xã hội",
+    concept: "Khi QHSX kìm hãm LLSX, cách mạng xã hội là tất yếu để xây dựng xã hội mới tiến bộ hơn.",
+    bg: "from-red-400/40 via-orange-800 to-stone-950",
+    tiles: ["✊", "🔥", "🌅", "📜", "⚖️", "🏳️", "🏠", "🤝", "🌟"],
+    image: "/puzzles/revolution.png",
+  },
+  governance: {
+    id: "governance",
+    caption: "Chức năng nhà nước",
+    concept: "Nhà nước thực hiện chức năng đối nội (quản lý xã hội, thu thuế, tư pháp) và đối ngoại (bảo vệ lãnh thổ, ngoại giao).",
+    bg: "from-amber-300/40 via-stone-700 to-slate-950",
+    tiles: ["🏛️", "⚖️", "💰", "📜", "👑", "🛡️", "🎓", "🔔", "🗳️"],
+    image: "/puzzles/governance.png",
+  },
 };
 
 // NPC nào trả lời sai thì ghép tranh nào (theo khái niệm của màn)
@@ -395,11 +419,11 @@ export const PUZZLE_BY_NPC: Record<string, string> = {
   farmer: "commune",
   craftsman: "surplus",
   merchant: "property",
-  worker: "conflict",
+  worker: "class",
   guard: "state",
-  chief: "state",
+  chief: "governance",
   student: "modern",
-  scholar: "conflict",
+  scholar: "revolution",
 };
 
 // NPC phụ ở 3 màn then chốt — chỉ thoại ngắn, tạo góc nhìn phản biện
@@ -407,9 +431,9 @@ export const SECONDARY_NPCS: Record<string, SecondaryNPC> = {
   merchant: {
     id: "worker-side",
     name: "Người Lao Động",
-    sprite: "😣",
-    x: 25,
-    y: 65,
+    sprite: "/sprites/worker-side.png",
+    x: 32,
+    y: 50,
     lines: [
       "Họ lấy hết đất đai... Chúng tôi chẳng còn gì.",
       "Công bằng ư? Chỉ là cái cớ để giữ của.",
@@ -418,9 +442,9 @@ export const SECONDARY_NPCS: Record<string, SecondaryNPC> = {
   worker: {
     id: "merchant-side",
     name: "Thương Nhân Giàu",
-    sprite: "🤵",
-    x: 25,
-    y: 28,
+    sprite: "/sprites/merchant-side.png",
+    x: 35,
+    y: 42,
     lines: [
       "Ta làm giàu bằng năng lực. Có gì sai?",
       "Nếu không có ta, ai tạo việc làm cho họ?",
@@ -429,9 +453,9 @@ export const SECONDARY_NPCS: Record<string, SecondaryNPC> = {
   chief: {
     id: "guard-side",
     name: "Lính Gác",
-    sprite: "💂",
-    x: 28,
-    y: 70,
+    sprite: "/sprites/guard-side.png",
+    x: 38,
+    y: 45,
     lines: [
       "Trưởng làng ra lệnh, tôi thi hành.",
       "Không có luật, làng này sẽ loạn.",

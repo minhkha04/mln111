@@ -35,7 +35,7 @@ function useTypewriter(text: string, speed = 22) {
   return shown;
 }
 
-function Modal({ children, wide }: { children: React.ReactNode; wide?: boolean }) {
+function Modal({ children, wide, medium }: { children: React.ReactNode; wide?: boolean; medium?: boolean }) {
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
@@ -49,7 +49,7 @@ function Modal({ children, wide }: { children: React.ReactNode; wide?: boolean }
         exit={{ scale: 0.92, opacity: 0 }}
         transition={{ type: "spring", stiffness: 220, damping: 24 }}
         className={`max-h-[92vh] w-full overflow-auto rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-2xl ${
-          wide ? "max-w-5xl" : "max-w-lg"
+          wide ? "max-w-5xl" : medium ? "max-w-2xl" : "max-w-lg"
         }`}
       >
         {children}
@@ -101,8 +101,8 @@ export default function GameUI() {
       {/* Lesson Intro — trước khi explore */}
       <AnimatePresence>
         {s.mode === "lesson" && lesson && (
-          <Modal>
-            <LessonIntroView lesson={lesson} sceneIndex={s.sceneIndex} onClose={s.closeLesson} />
+          <Modal medium>
+            <LessonIntroView lesson={lesson} sceneIndex={s.sceneIndex} npcId={npc.id} onClose={s.closeLesson} />
           </Modal>
         )}
       </AnimatePresence>
@@ -174,8 +174,9 @@ export default function GameUI() {
         {s.mode === "dialogue" && (
           <div className="absolute inset-x-0 bottom-0 p-3">
             <div className="rounded-2xl border border-slate-700 bg-slate-900/95 p-4 shadow-2xl backdrop-blur">
-              <div className="mb-1 flex items-center gap-2">
-                <span className="text-xl">{npc.sprite}</span>
+              <div className="mb-1 flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/sprites/${npc.id}.png`} alt={npc.name} className="h-12 w-12 object-contain" />
                 <span className="text-sm font-bold text-amber-300">{npc.name}</span>
               </div>
               <DialogueLine />
@@ -187,8 +188,9 @@ export default function GameUI() {
         {s.mode === "secondary-dialogue" && secNpc && (
           <div className="absolute inset-x-0 bottom-0 p-3">
             <div className="rounded-2xl border border-rose-800/50 bg-slate-900/95 p-4 shadow-2xl backdrop-blur">
-              <div className="mb-1 flex items-center gap-2">
-                <span className="text-xl">{secNpc.sprite}</span>
+              <div className="mb-1 flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={secNpc.sprite} alt={secNpc.name} className="h-12 w-12 object-contain" />
                 <span className="text-sm font-bold text-rose-300">{secNpc.name}</span>
                 <span className="rounded bg-rose-900/50 px-1.5 py-0.5 text-[10px] text-rose-300">Góc nhìn khác</span>
               </div>
@@ -225,7 +227,7 @@ export default function GameUI() {
       {/* Popup: quiz / giải thích / theory / lựa chọn / ghép tranh */}
       <AnimatePresence>
         {popupMode && (
-          <Modal wide={s.mode === "puzzle"}>
+          <Modal medium={s.mode !== "puzzle"} wide={s.mode === "puzzle"}>
             {s.mode === "theory" && npc.theory && <InlineTheoryView npc={npc} onClose={s.closeTheory} />}
             {s.mode === "quiz" && <QuizView />}
             {s.mode === "explanation" && <ExplanationView />}
@@ -284,17 +286,26 @@ function SecondaryDialogueLine() {
   );
 }
 
-function LessonIntroView({ lesson, sceneIndex, onClose }: { lesson: { title: string; concept: string; bullets: string[]; citation: string }; sceneIndex: number; onClose: () => void }) {
+function LessonIntroView({ lesson, sceneIndex, npcId, onClose }: { lesson: { title: string; concept: string; bullets: string[]; citation: string }; sceneIndex: number; npcId: string; onClose: () => void }) {
   return (
     <div>
-      <div className="mb-1 flex items-center gap-2">
-        <span className="rounded-full bg-amber-600/30 px-2.5 py-0.5 text-xs font-bold text-amber-300">
-          📖 Bài học {sceneIndex + 1}/8
-        </span>
-      </div>
-      <h2 className="mb-3 text-xl font-extrabold text-amber-200">{lesson.title}</h2>
-      <div className="mb-4 rounded-lg border-l-4 border-amber-500 bg-amber-950/30 p-3">
-        <p className="text-sm font-semibold leading-relaxed text-amber-100">{lesson.concept}</p>
+      <div className="flex gap-5">
+        {/* NPC portrait */}
+        <div className="hidden shrink-0 sm:block">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`/sprites/${npcId}.png`} alt="" className="h-36 w-36 rounded-xl bg-slate-800/50 object-contain p-2" />
+        </div>
+        <div className="flex-1">
+          <div className="mb-1 flex items-center gap-2">
+            <span className="rounded-full bg-amber-600/30 px-2.5 py-0.5 text-xs font-bold text-amber-300">
+              📖 Bài học {sceneIndex + 1}/8
+            </span>
+          </div>
+          <h2 className="mb-3 text-xl font-extrabold text-amber-200">{lesson.title}</h2>
+          <div className="mb-4 rounded-lg border-l-4 border-amber-500 bg-amber-950/30 p-3">
+            <p className="text-sm font-semibold leading-relaxed text-amber-100">{lesson.concept}</p>
+          </div>
+        </div>
       </div>
       <ul className="mb-4 space-y-2">
         {lesson.bullets.map((b, i) => (
@@ -398,12 +409,19 @@ function QuizView() {
   );
 }
 
-function InlineTheoryView({ npc, onClose }: { npc: { name: string; theory?: string }; onClose: () => void }) {
+function InlineTheoryView({ npc, onClose }: { npc: { id: string; name: string; theory?: string }; onClose: () => void }) {
   if (!npc.theory) return null;
   return (
     <div>
-      <div className="mb-3 text-base font-bold text-amber-300">📖 Lý thuyết — {npc.name}</div>
-      <p className="mb-5 rounded-lg border-l-4 border-amber-500 bg-slate-800/50 p-4 text-lg leading-relaxed text-slate-100">
+      <div className="mb-4 flex items-center gap-4">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={`/sprites/${npc.id}.png`} alt={npc.name} className="h-20 w-20 rounded-xl bg-slate-800/50 object-contain p-1" />
+        <div>
+          <div className="text-base font-bold text-amber-300">📖 Lý thuyết — {npc.name}</div>
+          <p className="mt-1 text-xs text-slate-400">Ôn tập trước khi trả lời câu hỏi</p>
+        </div>
+      </div>
+      <p className="mb-5 rounded-lg border-l-4 border-amber-500 bg-slate-800/50 p-4 text-base leading-relaxed text-slate-100">
         {npc.theory}
       </p>
       <button
