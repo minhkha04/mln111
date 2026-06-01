@@ -1,4 +1,4 @@
-import type { NPC, Puzzle, SceneBg } from "./types";
+import type { NPC, Puzzle, SceneBg, SecondaryNPC } from "./types";
 
 // Nội dung lấy từ flow.md (Content Writer Pack). Tiếng Việt theo bản gốc.
 export const INTRO = [
@@ -20,7 +20,9 @@ export const NPCS: NPC[] = [
     stage: 1,
     lines: [
       "Chúng tôi cùng nhau trồng trọt và săn bắt.",
+      "Công cụ lao động thô sơ — đá, gậy — mỗi người chỉ làm ra vừa đủ ăn.",
       "Ai cũng có phần như nhau. Không ai giàu hơn ai cả.",
+      "Không ai tích lũy được gì, nên không có giàu nghèo, không có giai cấp.",
     ],
     theory:
       "Nguồn gốc nhà nước — Công xã nguyên thủy: công cụ sản xuất lạc hậu (đồ đá), năng suất thấp, KHÔNG có của dư thừa. Do chưa có chế độ tư hữu nên chưa có giai cấp, vì vậy nhà nước CHƯA xuất hiện.",
@@ -34,7 +36,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 2,
       explanation:
-        "Trong xã hội nguyên thủy, chưa tồn tại chế độ tư hữu và giai cấp, nên chưa cần nhà nước để duy trì sự thống trị xã hội.",
+        "Trong xã hội nguyên thủy, chưa tồn tại chế độ tư hữu và giai cấp, nên chưa cần nhà nước để duy trì sự thống trị xã hội. (Slide Tiết 42, tr.5)",
       hint: "💡 Nhà nước chỉ xuất hiện khi xã hội tách thành các giai cấp đối kháng. Vậy thứ gì CHƯA có trong công xã nguyên thủy?",
     },
     onComplete: { support: +10 },
@@ -51,7 +53,9 @@ export const NPCS: NPC[] = [
     stage: 2,
     lines: [
       "Công cụ mới giúp chúng tôi sản xuất nhiều hơn.",
-      "Bây giờ đã có của cải dư thừa.",
+      "Khi đá được thay bằng đồng, năng suất tăng vọt.",
+      "Lần đầu tiên, một người có thể làm ra nhiều hơn mức cần để sống.",
+      "Phần dư thừa này sẽ thuộc về ai? Đó là câu hỏi thay đổi lịch sử.",
     ],
     theory:
       "Nguyên nhân SÂU XA ra đời nhà nước: sự phát triển của lực lượng sản xuất (công cụ tiến bộ — đồ đồng) làm năng suất tăng, dẫn đến của cải DƯ THỪA tương đối. Đây là tiền đề vật chất làm xuất hiện chế độ tư hữu.",
@@ -65,7 +69,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 1,
       explanation:
-        "Lực lượng sản xuất phát triển tạo ra của cải dư thừa — tiền đề vật chất cho tư hữu và phân hóa giai cấp về sau.",
+        "Lực lượng sản xuất phát triển tạo ra của cải dư thừa — tiền đề vật chất cho tư hữu và phân hóa giai cấp về sau. (Slide Tiết 42, tr.5)",
       hint: "💡 Công cụ tốt hơn → làm ra nhiều hơn mức cần dùng. Phần làm ra nhiều hơn đó gọi là gì?",
     },
     onComplete: { support: +5 },
@@ -97,7 +101,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 1,
       explanation:
-        "Chế độ tư hữu về tư liệu sản xuất là nguyên nhân trực tiếp làm xã hội phân hóa thành giai cấp.",
+        "Chế độ tư hữu về tư liệu sản xuất là nguyên nhân trực tiếp làm xã hội phân hóa thành giai cấp. (Slide Tiết 42, tr.6)",
       hint: "💡 Khi một số người bắt đầu chiếm của dư làm 'của riêng', chế độ gì ra đời và gây phân hóa?",
     },
     onComplete: { wealthGap: +35 },
@@ -120,7 +124,9 @@ export const NPCS: NPC[] = [
     lines: [
       "Chúng tôi làm việc cả ngày, nhưng vẫn không đủ thức ăn.",
       "Trong khi người giàu ngày càng giàu hơn.",
-      "(Thương nhân giàu đáp: Ta sở hữu đất đai và công cụ. Họ phải làm việc cho ta.)",
+      "Họ nắm tư liệu sản xuất — đất đai, công cụ, nhà xưởng.",
+      "Chúng tôi chỉ có sức lao động. Không có lựa chọn nào khác ngoài làm thuê.",
+      "Mâu thuẫn giữa giai cấp bóc lột và bị bóc lột ngày càng gay gắt!",
     ],
     theory:
       "Nguyên nhân TRỰC TIẾP ra đời nhà nước: mâu thuẫn giai cấp gay gắt đến mức KHÔNG THỂ ĐIỀU HÒA. Theo Lenin: “Nhà nước là sản phẩm và biểu hiện của những mâu thuẫn giai cấp không thể điều hòa được.” Đây cũng là cội nguồn của cách mạng xã hội.",
@@ -134,7 +140,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 1,
       explanation:
-        "Nhà nước là sản phẩm và biểu hiện của những mâu thuẫn giai cấp không thể điều hòa được. — V. I. Lenin",
+        "Nhà nước là sản phẩm và biểu hiện của những mâu thuẫn giai cấp không thể điều hòa được. — V.I. Lenin (Slide Tiết 42, tr.5-6)",
       hint: "💡 Nhớ câu nói nổi tiếng của Lenin ở đầu game: nhà nước sinh ra từ điều gì 'không thể điều hòa'?",
     },
     onComplete: { conflict: +45 },
@@ -158,6 +164,9 @@ export const NPCS: NPC[] = [
     lines: [
       "Mâu thuẫn xã hội ngày càng gay gắt.",
       "Người giàu muốn bảo vệ tài sản. Người nghèo muốn thay đổi xã hội.",
+      "Khi mâu thuẫn giai cấp lên đến mức không thể điều hòa...",
+      "...xã hội cần một bộ máy quyền lực đặc biệt.",
+      "Quân đội, cảnh sát, nhà tù, tòa án — đó là công cụ của nhà nước.",
       "Từ hôm nay, luật pháp sẽ được thực thi trong ngôi làng này.",
     ],
     theory:
@@ -172,7 +181,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 2,
       explanation:
-        "Nhà nước là tổ chức chính trị của giai cấp thống trị, dùng để duy trì sự thống trị đối với các giai cấp khác.",
+        "Nhà nước là tổ chức chính trị của một giai cấp thống trị về mặt kinh tế nhằm bảo vệ trật tự hiện hành và đàn áp sự phản kháng của các giai cấp khác. (Slide Tiết 42, tr.7)",
       hint: "💡 Nhà nước không trung lập — nó phục vụ và bảo vệ lợi ích của giai cấp nào?",
     },
     onComplete: { statePower: +20, stability: +10 },
@@ -191,6 +200,9 @@ export const NPCS: NPC[] = [
     lines: [
       "Chúng ta cần luật pháp, thuế và lực lượng bảo vệ",
       "để duy trì trật tự xã hội.",
+      "Nhà nước vừa bảo vệ quyền lợi giai cấp cầm quyền...",
+      "...vừa quản lý các mặt đời sống: kinh tế, văn hóa, y tế, giáo dục.",
+      "Đối ngoại thì bảo vệ lãnh thổ, hợp tác quốc tế.",
     ],
     theory:
       "Chức năng cơ bản của nhà nước: theo tính chất gồm chức năng thống trị chính trị (duy trì sự thống trị, bảo vệ lợi ích giai cấp) và chức năng xã hội (quản lý, thúc đẩy XH phát triển); theo phạm vi gồm chức năng đối nội (luật pháp, văn hóa, y tế, giáo dục) và đối ngoại (bảo vệ lãnh thổ, trao đổi quốc tế).",
@@ -204,7 +216,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 3,
       explanation:
-        "Nhà nước vừa quản lý xã hội, vừa duy trì trật tự, vừa bảo vệ lợi ích của giai cấp thống trị.",
+        "Nhà nước vừa quản lý xã hội, vừa duy trì trật tự, vừa bảo vệ lợi ích của giai cấp thống trị. (Slide Tiết 42, tr.9-10)",
       hint: "💡 Cả ba việc: quản lý xã hội, duy trì trật tự, bảo vệ giai cấp thống trị — đều đúng. Vậy chọn đáp án nào?",
     },
     onComplete: { statePower: +10 },
@@ -221,8 +233,11 @@ export const NPCS: NPC[] = [
     stage: 6,
     requiresStateBorn: true,
     lines: [
-      "Ngày nay, nhà nước còn quản lý:",
-      "AI, mạng xã hội, thuế, giáo dục và an sinh xã hội.",
+      "Trong đại dịch COVID-19, nhà nước Việt Nam đã huy động toàn bộ hệ thống.",
+      "Cách ly tập trung, hỗ trợ 62.000 tỷ đồng, tiêm vaccine miễn phí.",
+      "Đó chính là chức năng xã hội của nhà nước — bảo vệ lợi ích cộng đồng.",
+      "Ngày nay, nhà nước còn quản lý: AI, mạng xã hội, thuế, giáo dục...",
+      "Cách mạng công nghiệp 4.0 đặt ra thách thức mới cho bộ máy nhà nước.",
     ],
     theory:
       "Cách mạng xã hội hiện nay: thời đại CMCN 4.0, kinh tế tri thức, xu hướng đối thoại thay đối đầu. CMXH có xu hướng diễn ra dưới hình thức chuyển hóa dần dần sang hình thái KT-XH tiến bộ hơn. Nhà nước hiện đại đồng thời quản lý xã hội, ổn định chính trị và điều tiết kinh tế. Mục tiêu của Việt Nam: dân giàu, nước mạnh, công bằng, dân chủ, văn minh.",
@@ -236,7 +251,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 3,
       explanation:
-        "Nhà nước hiện đại đảm nhiệm đồng thời quản lý xã hội, ổn định chính trị và điều tiết kinh tế.",
+        "Nhà nước hiện đại đảm nhiệm đồng thời quản lý xã hội, ổn định chính trị và điều tiết kinh tế. (Slide Tiết 42, tr.9-10; Slide Tiết 43, tr.9-10)",
       hint: "💡 Nhà nước hôm nay làm rất nhiều việc cùng lúc — quản lý xã hội, ổn định chính trị, điều tiết kinh tế. Đáp án nào bao trùm tất cả?",
     },
     onComplete: { support: +5 },
@@ -253,7 +268,9 @@ export const NPCS: NPC[] = [
     stage: 1,
     lines: [
       "Ta là người ghi chép lịch sử ngôi làng.",
-      "Hãy trả lời một câu hỏi ôn tập nhé.",
+      "Từ công xã nguyên thủy đến nhà nước — mọi thứ đều có nguyên nhân.",
+      "Cách mạng xã hội là quy luật tất yếu khi QHSX kìm hãm LLSX.",
+      "Hãy trả lời câu hỏi cuối cùng nhé.",
     ],
     theory:
       "Nguồn gốc cách mạng xã hội: nguyên nhân sâu xa là mâu thuẫn giữa lực lượng sản xuất (LLSX) phát triển với quan hệ sản xuất (QHSX) đã lỗi thời kìm hãm nó. Mâu thuẫn cơ bản này biểu hiện thành đấu tranh giai cấp, tất yếu dẫn tới cách mạng xã hội — đỉnh cao của đấu tranh giai cấp.",
@@ -267,7 +284,7 @@ export const NPCS: NPC[] = [
       ],
       correctIndex: 2,
       explanation:
-        "Mâu thuẫn giữa lực lượng sản xuất và quan hệ sản xuất là mâu thuẫn cơ bản thúc đẩy cách mạng xã hội.",
+        "Mâu thuẫn giữa LLSX và QHSX là mâu thuẫn cơ bản thúc đẩy cách mạng xã hội. (Slide Tiết 43, tr.4)",
       hint: "💡 Cách mạng xã hội bắt nguồn từ mâu thuẫn giữa cái 'làm ra của cải' và cái 'quan hệ sở hữu'. Đó là hai yếu tố nào?",
     },
     onComplete: { support: +5 },
@@ -371,6 +388,30 @@ export const PUZZLES: Record<string, Puzzle> = {
     tiles: ["🏙️", "📡", "🛰️", "🏦", "🏛️", "💳", "🤖", "📱", "🌐"],
     image: "/puzzles/modern.png",
   },
+  class: {
+    id: "class",
+    caption: "Hình thành giai cấp",
+    concept: "Xã hội phân hóa thành giai cấp thống trị và bị thống trị dựa trên quyền sở hữu tư liệu sản xuất.",
+    bg: "from-rose-300/40 via-amber-800 to-stone-950",
+    tiles: ["🤵", "👑", "💰", "⚖️", "🏠", "📜", "😣", "⛓️", "🧱"],
+    image: "/puzzles/class.png",
+  },
+  revolution: {
+    id: "revolution",
+    caption: "Cách mạng xã hội",
+    concept: "Khi QHSX kìm hãm LLSX, cách mạng xã hội là tất yếu để xây dựng xã hội mới tiến bộ hơn.",
+    bg: "from-red-400/40 via-orange-800 to-stone-950",
+    tiles: ["✊", "🔥", "🌅", "📜", "⚖️", "🏳️", "🏠", "🤝", "🌟"],
+    image: "/puzzles/revolution.png",
+  },
+  governance: {
+    id: "governance",
+    caption: "Chức năng nhà nước",
+    concept: "Nhà nước thực hiện chức năng đối nội (quản lý xã hội, thu thuế, tư pháp) và đối ngoại (bảo vệ lãnh thổ, ngoại giao).",
+    bg: "from-amber-300/40 via-stone-700 to-slate-950",
+    tiles: ["🏛️", "⚖️", "💰", "📜", "👑", "🛡️", "🎓", "🔔", "🗳️"],
+    image: "/puzzles/governance.png",
+  },
 };
 
 // NPC nào trả lời sai thì ghép tranh nào (theo khái niệm của màn)
@@ -378,11 +419,48 @@ export const PUZZLE_BY_NPC: Record<string, string> = {
   farmer: "commune",
   craftsman: "surplus",
   merchant: "property",
-  worker: "conflict",
+  worker: "class",
   guard: "state",
-  chief: "state",
+  chief: "governance",
   student: "modern",
-  scholar: "conflict",
+  scholar: "revolution",
+};
+
+// NPC phụ ở 3 màn then chốt — chỉ thoại ngắn, tạo góc nhìn phản biện
+export const SECONDARY_NPCS: Record<string, SecondaryNPC> = {
+  merchant: {
+    id: "worker-side",
+    name: "Người Lao Động",
+    sprite: "/sprites/worker-side.png",
+    x: 32,
+    y: 50,
+    lines: [
+      "Họ lấy hết đất đai... Chúng tôi chẳng còn gì.",
+      "Công bằng ư? Chỉ là cái cớ để giữ của.",
+    ],
+  },
+  worker: {
+    id: "merchant-side",
+    name: "Thương Nhân Giàu",
+    sprite: "/sprites/merchant-side.png",
+    x: 35,
+    y: 42,
+    lines: [
+      "Ta làm giàu bằng năng lực. Có gì sai?",
+      "Nếu không có ta, ai tạo việc làm cho họ?",
+    ],
+  },
+  chief: {
+    id: "guard-side",
+    name: "Lính Gác",
+    sprite: "/sprites/guard-side.png",
+    x: 38,
+    y: 45,
+    lines: [
+      "Trưởng làng ra lệnh, tôi thi hành.",
+      "Không có luật, làng này sẽ loạn.",
+    ],
+  },
 };
 
 export const ENDING_NARRATION = [
