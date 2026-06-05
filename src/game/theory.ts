@@ -184,7 +184,7 @@ export const THEORY_DEEPS: Record<string, TheoryDeep> = {
     citation:
       "Slide Tiết 42, tr.5-6 — V.I. Lenin, \"Nhà nước và Cách mạng\" — Giáo trình Triết học Mác-Lênin, NXB CTQG Sự thật, 2021",
     realWorld:
-      "Trong lịch sử Việt Nam và thế giới, các cuộc đình công lao động phản ánh mâu thuẫn giai cấp hiện đại. Các khu công nghiệp FDI tại Bình Dương, Đồng Nai từng chứng kiến nhiều cuộc đình công lớn — cho thấy mâu thuẫn lợi ích giữa người lao động và chủ doanh nghiệp vẫn tồn tại trong xã hội đương đại.",
+      "Trên thế giới, các cuộc đình công lao động phản ánh mâu thuẫn giai cấp hiện đại. Năm 2022, công nhân kho hàng Amazon tại Staten Island (Mỹ) đã bỏ phiếu thành lập công đoàn để đòi quyền lợi. Tại Trung Quốc, các nhà máy Foxconn (lắp ráp iPhone) từng chứng kiến nhiều cuộc đình công lớn do điều kiện lao động khắc nghiệt — cho thấy mâu thuẫn lợi ích giữa người lao động và chủ doanh nghiệp vẫn tồn tại phổ biến trong xã hội tư bản đương đại.",
   },
 
   guard: {
